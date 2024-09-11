@@ -49,8 +49,6 @@ h4 {
   font-weight: 600;
   border-top-left-radius: 1.3rem;
   border-top-right-radius: 1.3rem;
-  /* border: 2px solid #005cc8ff; */
-  /* overflow: clip; */
 }
 .card-body {
   width: 100%;
@@ -80,14 +78,6 @@ h4 {
 .card-section-body span:nth-of-type(2) {
   padding: 0 0.5rem 0 0;
 }
-.card-section-colorpick .card-section-body {
-  display: block;
-}
-.color-value {
-  padding: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
 textarea {
   width: 100%;
   height: auto;
@@ -97,6 +87,7 @@ textarea {
   font: 500 16px Arial;
   color: #757575;
   font-family: monospace;
+  grid-column: span 2;
 }
 #colorpick {
   background-color: transparent;
@@ -105,10 +96,14 @@ textarea {
   width: 100%;
   height: 10rem;
   padding: 0;
+  grid-column: span 2;
 }
-.card-section-body.result {
-  display: grid;
-  grid-template-columns: 1fr;
+#colorpick ~ div{
+  padding: 1rem;
+  grid-column: span 2;
+  font-weight: bold;
+  text-transform: uppercase;
+  justify-self: center;
 }
 
 #mode-btn {
@@ -149,100 +144,105 @@ textarea {
 }
 
     </style>
-    <script type="module" src="js/jquery-3.7.1.min.js"> </script>
-    <script type="module" src="js/main.js"> </script>
+    <script type="module" src="src/scripts/jquery-3.7.1.min.js"> </script>
+    <script type="module" src="src/scripts/main.js"> </script>
   </head>
   <body>
     <div class="container">
       <button id="mode-btn" mode="day">Day mode</button>
-      <h1>Text Shadow Generator</h1>
-      <div class="section">
-        <div class="settings card"> 
-          <div class="card-header">Settings</div>
-          <div class="card-body">
-            <div class="card-section">
-              <div class="card-header-header"> 
-                <h4>Размер Шрифта</h4>
-              </div>
-              <div class="card-section-body">
-                <input class="range" id="range-font-size" type="range" name="" min="8" max="72" step="1" value="40">
-                <div><span class="font-size-count value">40</span><span>px</span></div>
-              </div>
-            </div>
-            <div class="card-section">
-              <div class="card-header-header"> 
-                <h4>Смещение по оси X</h4>
-              </div>
-              <div class="card-section-body">
-                <input class="range" id="range-offset-X" type="range" name="" min="-15" max="15" step="1" value="2">
-                <div><span class="offset-X value">2</span><span>px</span></div>
-              </div>
-            </div>
-            <div class="card-section">
-              <div class="card-header-header"> 
-                <h4>Смещение по оси Y</h4>
-              </div>
-              <div class="card-section-body">
-                <input class="range" id="range-offset-Y" type="range" name="" min="-15" max="15" step="1" value="2">
-                <div><span class="offset-Y value">2</span><span>px</span></div>
-              </div>
-            </div>
-            <div class="card-section">
-              <div class="card-header-header"> 
-                <h4>Размытие</h4>
-              </div>
-              <div class="card-section-body">
-                <input class="range" id="range-blur" type="range" name="" min="0" max="20" step="1" value="4">
-                <div><span class="blur value">4</span><span>px</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="color card"> 
-          <div class="card-header">Color</div>
-          <div class="card-body">
-            <div class="card-section card-section-colorpick">
-              <div class="card-header-header"> 
-                <h4>Цвет</h4>
-              </div>
-              <div class="card-section-body">
-                <input id="colorpick" type="color" value="#005CC8">
-                <div><span class="color-value value">#005CC8</span></div>
-              </div>
-            </div>
-            <div class="card-section">
-              <div class="card-header-header"> 
-                <h4>Прозрачность</h4>
-              </div>
-              <div class="card-section-body">
-                <input class="range" id="range-opacity" type="range" name="" min="0" max="1" step="0.01" value="1">
-                <div><span class="opacity-value value">1</span></div>
-              </div>
+      <div class="tsg">
+        <h1 class="tsg_title">Text Shadow Generator</h1>
+        <div class="section tsg_section">
+          <div class="card"> 
+            <div class="card-header">Settings</div>
+            <div class="card-body">
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Font Size</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="range-font-size" type="range" name="" min="8" max="72" step="1" value="40">
+                        <div><span>40</span><span>px</span></div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Offset X</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="range-offset-X" type="range" name="" min="-20" max="20" step="1" value="2">
+                        <div><span>2</span><span>px</span></div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Offset Y</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="range-offset-Y" type="range" name="" min="-20" max="20" step="1" value="2">
+                        <div><span>2</span><span>px</span></div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Blur</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="range-blur" type="range" name="" min="0" max="20" step="1" value="4">
+                        <div><span>4</span><span>px</span></div>
+                      </div>
+                    </div>
             </div>
           </div>
-        </div>
-        <div class="result card"> 
-          <div class="card-header">Result</div>
-          <div class="card-body">
-            <div class="card-section">
-              <div class="card-header-header"> 
-                <h4>Цвет в HEX</h4>
-              </div>
-              <div class="card-section-body result">
-                <textarea id="resulthex" name="resulthex" rows="6" readonly> </textarea>
-              </div>
+          <div class="card"> 
+            <div class="card-header">Color</div>
+            <div class="card-body">
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Color</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input id="colorpick" type="color" value="#005CC8">
+                        <div><span>#005CC8</span><span></span></div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Opacity</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="range-opacity" type="range" name="" min="0" max="1" step="0.01" value="1">
+                        <div><span>1</span><span></span></div>
+                      </div>
+                    </div>
             </div>
-            <div class="card-section">
-              <div class="card-header-header"> 
-                <h4>Цвет в RGB</h4>
-              </div>
-              <div class="card-section-body result">
-                <textarea id="resultrgb" name="resultrdb" rows="6" readonly> </textarea>
-              </div>
+          </div>
+          <div class="card"> 
+            <div class="card-header">Result</div>
+            <div class="card-body">
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>CSS code with HEX</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <textarea id="resulthex" name="resulthex" rows="6" readonly> </textarea>
+                        <div><span></span><span></span></div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>CSS code with RGB</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <textarea id="resultrgb" name="resultrdb" rows="6" readonly> </textarea>
+                        <div><span></span><span></span></div>
+                      </div>
+                    </div>
             </div>
           </div>
         </div>
       </div>
+      <script type="module" src="src/components/text-shadow-generator/text-shadow-generator.js"></script>
     </div>
   </body>
 </html>

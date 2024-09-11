@@ -1,0 +1,38 @@
+mixin card-section(title, span1, span2)
+    .card-section
+        .card-section-header 
+            h4=title
+        .card-section-body
+            block
+            div
+                span=span1
+                span=span2
+.tsg
+    h1.tsg_title Text Shadow Generator
+    .section.tsg_section
+        .card 
+            .card-header Settings
+            .card-body
+                +card-section('Font Size', '40', 'px')
+                    input#range-font-size(type="range", name="", min="8", max="72", step="1", value="40").range
+                +card-section('Offset X', '2', 'px')
+                    input#range-offset-X(type="range", name="", min="-20", max="20", step="1", value="2").range
+                +card-section('Offset Y', '2', 'px')
+                    input#range-offset-Y(type="range", name="", min="-20", max="20", step="1", value="2").range
+                +card-section('Blur', '4', 'px')
+                    input#range-blur(type="range", name="", min="0", max="20", step="1", value="4").range
+        .card 
+            .card-header Color
+            .card-body
+                +card-section('Color', '#005CC8', '')
+                    input#colorpick(type="color", value="#005CC8")
+                +card-section('Opacity', '1', '')
+                    input#range-opacity(type="range", name="", min="0", max="1", step="0.01", value="1").range
+        .card 
+            .card-header Result
+            .card-body
+                +card-section('CSS code with HEX', '', '')
+                    textarea#resulthex(name="resulthex",rows="6", readonly) 
+                +card-section('CSS code with RGB', '', '')
+                    textarea#resultrgb(name="resultrdb",rows="6", readonly) 
+script(type="module", src="src/components/text-shadow-generator/text-shadow-generator.js")

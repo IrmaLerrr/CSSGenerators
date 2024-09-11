@@ -4,77 +4,11 @@ html(lang="en")
   head
     title Text Shadow Generator
     style 
-      include css/style.css
-    script(type="module", src="js/jquery-3.7.1.min.js") 
-    script(type="module", src="js/main.js") 
+      include src/styles/main.css
+    script(type="module", src="src/scripts/jquery-3.7.1.min.js") 
+    script(type="module", src="src/scripts/main.js") 
+    //- script(type="module", src="src/components/text-shadow-generator/text-shadow-generator.js") 
   body
     .container
         button#mode-btn(mode="day") Day mode
-        h1 Text Shadow Generator
-        .section
-            .settings.card 
-                .card-header Settings
-                .card-body
-                    .card-section
-                        .card-header-header 
-                            h4 Размер Шрифта
-                        .card-section-body
-                            input#range-font-size(type="range", name="", min="8", max="72", step="1", value="40").range
-                            div
-                                span.font-size-count.value 40
-                                span px
-                    .card-section
-                        .card-header-header 
-                            h4 Смещение по оси X
-                        .card-section-body
-                            input#range-offset-X(type="range", name="", min="-15", max="15", step="1", value="2").range
-                            div
-                                span.offset-X.value 2
-                                span px
-                    .card-section
-                        .card-header-header 
-                            h4 Смещение по оси Y
-                        .card-section-body
-                            input#range-offset-Y(type="range", name="", min="-15", max="15", step="1", value="2").range
-                            div
-                                span.offset-Y.value 2
-                                span px
-                    .card-section
-                        .card-header-header 
-                            h4 Размытие
-                        .card-section-body
-                            input#range-blur(type="range", name="", min="0", max="20", step="1", value="4").range
-                            div
-                                span.blur.value 4
-                                span px
-            .color.card 
-                .card-header Color
-                .card-body
-                    .card-section.card-section-colorpick
-                        .card-header-header 
-                            h4 Цвет
-                        .card-section-body
-                            input#colorpick(type="color", value="#005CC8")
-                            div
-                                span.color-value.value #005CC8
-                    .card-section
-                        .card-header-header 
-                            h4 Прозрачность
-                        .card-section-body
-                            input#range-opacity(type="range", name="", min="0", max="1", step="0.01", value="1").range
-                            div
-                                span.opacity-value.value 1
-            .result.card 
-                .card-header Result
-                .card-body
-                    .card-section
-                        .card-header-header 
-                            h4 Цвет в HEX
-                        .card-section-body.result
-                            textarea#resulthex(name="resulthex",rows="6", readonly) 
-                    .card-section
-                        .card-header-header 
-                            h4 Цвет в RGB
-                        .card-section-body.result
-                            textarea#resultrgb(name="resultrdb",rows="6", readonly) 
-
+        include src/components/text-shadow-generator/text-shadow-generator
