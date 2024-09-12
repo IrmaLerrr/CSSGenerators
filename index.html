@@ -22,21 +22,23 @@ h1 {
   height: 100px;
   line-height: 100px;
 }
-.tsg_title{
-  /* text-shadow: 2px 2px 4px #005cc8ff; */
-}
 .bsg_title{
   background-color: #ffffff;
   border-radius: 2rem;
   width: max-content;
   margin: 3rem auto;
   padding: 0 2rem;
-  /* box-shadow: 4px 4px 8px -1px #005cc8ff; */
+}
+.gg_title{
+  background: linear-gradient(0deg, #FFFFFF 0%, #005CC8 100%);
+  border-radius: 2rem;
+  width: max-content;
+  margin: 3rem auto;
+  padding: 0 2rem;
 }
 h4 {
   padding: 0;
   margin: 0;
-  margin-top: 1.5rem;
 }
 .section {
   display: flex;
@@ -77,7 +79,7 @@ h4 {
   border-radius: 3px;
 }
 .card-section {
-  padding: 0.5rem 1.5rem 1.5rem;
+  padding: 1rem;
   width: 100%;
 }
 .card-section-body {
@@ -86,9 +88,9 @@ h4 {
   justify-items: end;
   padding: 0.5rem;
 }
-.card-section-body span:nth-of-type(2) {
+/* .card-section-body span:nth-of-type(2) {
   padding: 0 0.5rem 0 0;
-}
+} */
 textarea {
   width: 100%;
   height: auto;
@@ -109,6 +111,11 @@ textarea {
   padding: 0;
   grid-column: span 2;
 }
+.gg_label{
+  grid-column: span 2;
+  justify-self: center;
+}
+
 .colorpick ~ div{
   padding: 1rem;
   grid-column: span 2;
@@ -117,7 +124,7 @@ textarea {
   justify-self: center;
 }
 
-#mode-btn {
+#btn_mode {
   position: absolute;
   right: 1rem;
   top: 1rem;
@@ -132,6 +139,24 @@ textarea {
   color: white;
   font-weight: 600;
 }
+select{
+  appearance: none;
+  position: absolute;
+  width: min-content;
+  left: 1rem;
+  top: 1.5rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 2rem;
+  border-radius: 2.5rem;
+  border: none;
+  outline: none;
+  background-color: #005cc8ff;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+
 
 /* Portrait tablets and medium desktops */
 @media (min-width: 992px) {
@@ -160,7 +185,12 @@ textarea {
   </head>
   <body>
     <div class="container">
-      <button id="mode-btn" mode="day">Day mode</button>
+      <button id="btn_mode" mode="day">Day mode</button>
+      <select id="select_generator" name="">
+        <option value="tsg">Text shadow generator</option>
+        <option value="bsg">Box shadow generator</option>
+        <option value="gg" selected>Gradient generator</option>
+      </select>
       <div class="tsg">
         <h1 class="tsg_title">Text Shadow Generator</h1>
         <div class="section tsg_section">
@@ -173,7 +203,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="range" id="tsg_range-font-size" type="range" name="" min="8" max="72" step="1" value="40">
-                        <div><span>40</span><span>px</span></div>
+                        <div><span>40</span><span>px</span>
+                        </div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -182,7 +213,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="range" id="tsg_range-offset-X" type="range" name="" min="-20" max="20" step="1" value="2">
-                        <div><span>2</span><span>px</span></div>
+                        <div><span>2</span><span>px</span>
+                        </div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -191,7 +223,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="range" id="tsg_range-offset-Y" type="range" name="" min="-20" max="20" step="1" value="2">
-                        <div><span>2</span><span>px</span></div>
+                        <div><span>2</span><span>px</span>
+                        </div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -200,7 +233,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="range" id="tsg_range-blur" type="range" name="" min="0" max="20" step="1" value="4">
-                        <div><span>4</span><span>px</span></div>
+                        <div><span>4</span><span>px</span>
+                        </div>
                       </div>
                     </div>
             </div>
@@ -214,7 +248,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="colorpick" id="tsg_colorpick" type="color" value="#005CC8">
-                        <div><span>#005CC8</span><span></span></div>
+                        <div><span>#005CC8</span>
+                        </div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -223,7 +258,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="range" id="tsg_range-opacity" type="range" name="" min="0" max="1" step="0.01" value="1">
-                        <div><span>1</span><span></span></div>
+                        <div><span>1</span>
+                        </div>
                       </div>
                     </div>
             </div>
@@ -237,7 +273,6 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <textarea id="tsg_resulthex" name="resulthex" rows="6" readonly> </textarea>
-                        <div><span></span><span></span></div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -246,7 +281,6 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <textarea id="tsg_resultrgb" name="resultrdb" rows="6" readonly> </textarea>
-                        <div><span></span><span></span></div>
                       </div>
                     </div>
             </div>
@@ -266,7 +300,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="range" id="bsg_range-offset-X" type="range" name="" min="-20" max="20" step="1" value="2">
-                        <div><span>2</span><span>px</span></div>
+                        <div><span>2</span><span>px</span>
+                        </div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -275,7 +310,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="range" id="bsg_range-offset-Y" type="range" name="" min="-20" max="20" step="1" value="2">
-                        <div><span>2</span><span>px</span></div>
+                        <div><span>2</span><span>px</span>
+                        </div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -284,7 +320,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="range" id="bsg_range-blur" type="range" name="" min="0" max="20" step="1" value="4">
-                        <div><span>4</span><span>px</span></div>
+                        <div><span>4</span><span>px</span>
+                        </div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -293,7 +330,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="range" id="bsg_range-spread" type="range" name="" min="-20" max="20" step="1" value="0">
-                        <div><span>4</span><span>px</span></div>
+                        <div><span>4</span><span>px</span>
+                        </div>
                       </div>
                     </div>
             </div>
@@ -307,7 +345,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="colorpick" id="bsg_colorpick" type="color" value="#005CC8">
-                        <div><span>#005CC8</span><span></span></div>
+                        <div><span>#005CC8</span>
+                        </div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -316,7 +355,8 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <input class="range" id="bsg_range-opacity" type="range" name="" min="0" max="1" step="0.01" value="1">
-                        <div><span>1</span><span></span></div>
+                        <div><span>1</span>
+                        </div>
                       </div>
                     </div>
             </div>
@@ -330,7 +370,6 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <textarea id="bsg_resulthex" name="resulthex" rows="6" readonly> </textarea>
-                        <div><span></span><span></span></div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -339,7 +378,6 @@ textarea {
                       </div>
                       <div class="card-section-body">
                         <textarea id="bsg_resultrgb" name="resultrdb" rows="6" readonly> </textarea>
-                        <div><span></span><span></span></div>
                       </div>
                     </div>
             </div>
@@ -347,6 +385,126 @@ textarea {
         </div>
       </div>
       <script type="module" src="src/components/box-shadow-generator/box-shadow-generator.js"></script>
+      <div class="gg">
+        <h1 class="gg_title">Gradient Generator</h1>
+        <div class="section gg_section">
+          <div class="card"> 
+            <div class="card-header">Color 1</div>
+            <div class="card-body">
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Color</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="colorpick" id="gg_colorpick1" type="color" value="#FFFFFF">
+                        <div><span>#FFFFFF</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Opacity</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="gg_range-opacity1" type="range" name="" min="0" max="1" step="0.01" value="1">
+                        <div><span>1</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Position</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="gg_range-position" type="range" name="" min="0" max="100" step="1" value="0">
+                        <div><span>0</span><span>%</span>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+          </div>
+          <div class="card"> 
+            <div class="card-header">Color 2</div>
+            <div class="card-body">
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Color</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="colorpick" id="gg_colorpick" type="color" value="#005CC8">
+                        <div><span>#005CC8</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Opacity</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="gg_range-opacity" type="range" name="" min="0" max="1" step="0.01" value="1">
+                        <div><span>1</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Position</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="gg_range-position" type="range" name="" min="0" max="100" step="1" value="100">
+                        <div><span>0</span><span>%</span>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+          </div>
+          <div class="card"> 
+            <div class="card-header">Result</div>
+            <div class="card-body">
+                    <div class="card-section gg_radio">
+                      <div class="card-section-header"> 
+                        <h4>Gradient Type</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <label class="gg_label">
+                          <input type="radio" value="linear" name="rad" id="gg_radio" checked><span>Linear</span>
+                        </label>
+                        <label class="gg_label">
+                          <input type="radio" value="radial" name="rad" id="gg_radio"><span>Radial</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="card-section gg_angle">
+                      <div class="card-section-header"> 
+                        <h4>Angle</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="gg_range-angle" type="range" name="" min="0" max="360" step="1" value="0">
+                        <div><span>0</span><span>deg</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>CSS code with HEX</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <textarea id="gg_resulthex" name="resulthex" rows="6" readonly> </textarea>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>CSS code with RGB</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <textarea id="gg_resultrgb" name="resultrdb" rows="6" readonly> </textarea>
+                      </div>
+                    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="module" src="src/components/gradient-generator/gradient-generator.js"></script>
     </div>
   </body>
 </html>

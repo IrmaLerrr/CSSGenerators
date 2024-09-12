@@ -10,6 +10,11 @@ html(lang="en")
     //- script(type="module", src="src/components/text-shadow-generator/text-shadow-generator.js") 
   body
     .container
-        button#mode-btn(mode="day") Day mode
+        button#btn_mode(mode="day") Day mode
+        select#select_generator(name="")
+          option(value="tsg") Text shadow generator
+          option(value="bsg") Box shadow generator
+          option(value="gg", selected) Gradient generator
         include src/components/text-shadow-generator/text-shadow-generator
         include src/components/box-shadow-generator/box-shadow-generator
+        include src/components/gradient-generator/gradient-generator

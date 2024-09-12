@@ -1,0 +1,38 @@
+.gg
+    h1.gg_title Gradient Generator
+    .section.gg_section
+        .card 
+            .card-header Color 1
+            .card-body
+                +card-section('Color', '#FFFFFF', '')
+                    input#gg_colorpick1(type="color", value="#FFFFFF").colorpick
+                +card-section('Opacity', '1', '')
+                    input#gg_range-opacity1(type="range", name="", min="0", max="1", step="0.01", value="1").range
+                +card-section('Position', '0', '%')
+                    input#gg_range-position(type="range", name="", min="0", max="100", step="1", value="0").range
+        .card 
+            .card-header Color 2
+            .card-body
+                +card-section('Color', '#005CC8', '')
+                    input#gg_colorpick(type="color", value="#005CC8").colorpick
+                +card-section('Opacity', '1', '')
+                    input#gg_range-opacity(type="range", name="", min="0", max="1", step="0.01", value="1").range
+                +card-section('Position', '0', '%')
+                    input#gg_range-position(type="range", name="", min="0", max="100", step="1", value="100").range
+        .card 
+            .card-header Result
+            .card-body
+                +card-section('Gradient Type', '', '')(class="gg_radio")
+                    label.gg_label
+                        input(type="radio", value="linear", name="rad", id="gg_radio" checked)
+                        span Linear
+                    label.gg_label
+                        input(type="radio", value="radial", name="rad", id="gg_radio") 
+                        span Radial
+                +card-section('Angle', '0', 'deg')(class="gg_angle")
+                    input#gg_range-angle(type="range", name="", min="0", max="360", step="1", value="0").range
+                +card-section('CSS code with HEX', '', '')
+                    textarea#gg_resulthex(name="resulthex",rows="6", readonly) 
+                +card-section('CSS code with RGB', '', '')
+                    textarea#gg_resultrgb(name="resultrdb",rows="6", readonly) 
+script(type="module", src="src/components/gradient-generator/gradient-generator.js")

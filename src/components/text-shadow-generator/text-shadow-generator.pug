@@ -1,12 +1,14 @@
 mixin card-section(title, span1, span2)
-    .card-section
+    .card-section&attributes(attributes)= name
         .card-section-header 
             h4=title
         .card-section-body
             block
-            div
-                span=span1
-                span=span2
+            if span1
+                div
+                    span=span1
+                    if span2
+                        span=span2
 .tsg
     h1.tsg_title Text Shadow Generator
     .section.tsg_section
