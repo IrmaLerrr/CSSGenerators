@@ -5,6 +5,7 @@ body {
 }
 .container {
   width: 90%;
+  max-width: 1400px;
   text-align: center;
   margin: auto;
 }
@@ -26,7 +27,7 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 .card {
   background-color: #ffffff;
@@ -61,7 +62,7 @@ h4 {
   border-radius: 3px;
 }
 .card-section {
-  padding: 0.5rem 0.5rem 1.5rem;
+  padding: 0.5rem 1.5rem 1.5rem;
   width: 100%;
 }
 .card-section-body {
@@ -84,7 +85,7 @@ textarea {
   font-family: monospace;
   grid-column: span 2;
 }
-#colorpick {
+#tsg_colorpick {
   background-color: transparent;
   border: none;
   outline: none;
@@ -93,7 +94,7 @@ textarea {
   padding: 0;
   grid-column: span 2;
 }
-#colorpick ~ div{
+#tsg_colorpick ~ div{
   padding: 1rem;
   grid-column: span 2;
   font-weight: bold;
@@ -103,7 +104,7 @@ textarea {
 
 #mode-btn {
   position: absolute;
-  left: 1rem;
+  right: 1rem;
   top: 1rem;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -120,14 +121,14 @@ textarea {
 /* Portrait tablets and medium desktops */
 @media (min-width: 992px) {
   .card {
-    flex-basis: calc((100% / 3) - 2rem);
+    flex-basis: calc((100% / 3) - 4rem);
   }
 }
 
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
   .card {
-    flex-basis: calc((100% / 2) - 1rem);
+    flex-basis: calc((100% / 2) - 2rem);
   }
 }
 

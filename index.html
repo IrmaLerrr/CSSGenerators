@@ -10,6 +10,7 @@
 }
 .container {
   width: 90%;
+  max-width: 1400px;
   text-align: center;
   margin: auto;
 }
@@ -31,7 +32,7 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 .card {
   background-color: #ffffff;
@@ -66,7 +67,7 @@ h4 {
   border-radius: 3px;
 }
 .card-section {
-  padding: 0.5rem 0.5rem 1.5rem;
+  padding: 0.5rem 1.5rem 1.5rem;
   width: 100%;
 }
 .card-section-body {
@@ -89,7 +90,7 @@ textarea {
   font-family: monospace;
   grid-column: span 2;
 }
-#colorpick {
+#tsg_colorpick {
   background-color: transparent;
   border: none;
   outline: none;
@@ -98,7 +99,7 @@ textarea {
   padding: 0;
   grid-column: span 2;
 }
-#colorpick ~ div{
+#tsg_colorpick ~ div{
   padding: 1rem;
   grid-column: span 2;
   font-weight: bold;
@@ -108,7 +109,7 @@ textarea {
 
 #mode-btn {
   position: absolute;
-  left: 1rem;
+  right: 1rem;
   top: 1rem;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -125,14 +126,14 @@ textarea {
 /* Portrait tablets and medium desktops */
 @media (min-width: 992px) {
   .card {
-    flex-basis: calc((100% / 3) - 2rem);
+    flex-basis: calc((100% / 3) - 4rem);
   }
 }
 
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
   .card {
-    flex-basis: calc((100% / 2) - 1rem);
+    flex-basis: calc((100% / 2) - 2rem);
   }
 }
 
@@ -161,7 +162,7 @@ textarea {
                         <h4>Font Size</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="range-font-size" type="range" name="" min="8" max="72" step="1" value="40">
+                        <input class="range" id="tsg_range-font-size" type="range" name="" min="8" max="72" step="1" value="40">
                         <div><span>40</span><span>px</span></div>
                       </div>
                     </div>
@@ -170,7 +171,7 @@ textarea {
                         <h4>Offset X</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="range-offset-X" type="range" name="" min="-20" max="20" step="1" value="2">
+                        <input class="range" id="tsg_range-offset-X" type="range" name="" min="-20" max="20" step="1" value="2">
                         <div><span>2</span><span>px</span></div>
                       </div>
                     </div>
@@ -179,7 +180,7 @@ textarea {
                         <h4>Offset Y</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="range-offset-Y" type="range" name="" min="-20" max="20" step="1" value="2">
+                        <input class="range" id="tsg_range-offset-Y" type="range" name="" min="-20" max="20" step="1" value="2">
                         <div><span>2</span><span>px</span></div>
                       </div>
                     </div>
@@ -188,7 +189,7 @@ textarea {
                         <h4>Blur</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="range-blur" type="range" name="" min="0" max="20" step="1" value="4">
+                        <input class="range" id="tsg_range-blur" type="range" name="" min="0" max="20" step="1" value="4">
                         <div><span>4</span><span>px</span></div>
                       </div>
                     </div>
@@ -202,7 +203,7 @@ textarea {
                         <h4>Color</h4>
                       </div>
                       <div class="card-section-body">
-                        <input id="colorpick" type="color" value="#005CC8">
+                        <input id="tsg_colorpick" type="color" value="#005CC8">
                         <div><span>#005CC8</span><span></span></div>
                       </div>
                     </div>
@@ -211,7 +212,7 @@ textarea {
                         <h4>Opacity</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="range-opacity" type="range" name="" min="0" max="1" step="0.01" value="1">
+                        <input class="range" id="tsg_range-opacity" type="range" name="" min="0" max="1" step="0.01" value="1">
                         <div><span>1</span><span></span></div>
                       </div>
                     </div>
@@ -225,7 +226,7 @@ textarea {
                         <h4>CSS code with HEX</h4>
                       </div>
                       <div class="card-section-body">
-                        <textarea id="resulthex" name="resulthex" rows="6" readonly> </textarea>
+                        <textarea id="tsg_resulthex" name="resulthex" rows="6" readonly> </textarea>
                         <div><span></span><span></span></div>
                       </div>
                     </div>
@@ -234,7 +235,7 @@ textarea {
                         <h4>CSS code with RGB</h4>
                       </div>
                       <div class="card-section-body">
-                        <textarea id="resultrgb" name="resultrdb" rows="6" readonly> </textarea>
+                        <textarea id="tsg_resultrgb" name="resultrdb" rows="6" readonly> </textarea>
                         <div><span></span><span></span></div>
                       </div>
                     </div>

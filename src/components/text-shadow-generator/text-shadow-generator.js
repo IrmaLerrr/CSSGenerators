@@ -1,47 +1,75 @@
 var shadowObj = {
   units: "px",
-  "range-font-size": $("#range-font-size").val(),
-  "range-offset-X": $("#range-offset-X").val(),
-  "range-offset-Y": $("#range-offset-Y").val(),
-  "range-blur": $("#range-blur").val(),
-  colorpick: $("#colorpick").val(),
-  "range-opacity": $("#range-opacity").val(),
+  "tsg_range-font-size": $("#tsg_range-font-size").val(),
+  "tsg_range-offset-X": $("#tsg_range-offset-X").val(),
+  "tsg_range-offset-Y": $("#tsg_range-offset-Y").val(),
+  "tsg_range-blur": $("#tsg_range-blur").val(),
+  tsg_colorpick: $("#tsg_colorpick").val(),
+  "tsg_range-opacity": $("#tsg_range-opacity").val(),
 };
-
-function changeShadow() {
-  var shadow =
-    shadowObj.colorpick.toUpperCase() +
-    Math.floor(shadowObj["range-opacity"] * 255)
+function getColorhex(color, opacity) {
+  let colorhex =
+    color.toUpperCase() +
+    Math.floor(opacity * 255)
       .toString(16)
-      .toUpperCase() +
-    " " +
-    shadowObj["range-offset-X"] +
-    shadowObj.units +
-    " " +
-    shadowObj["range-offset-Y"] +
-    shadowObj.units +
-    " " +
-    shadowObj["range-blur"] +
-    shadowObj.units;
-
-  $("h1").css("font-size", shadowObj["range-font-size"] + shadowObj.units);
-  $("h1").css("text-shadow", shadow);
-
-  var resulthex = `{\n  font-size: ${
-    shadowObj["range-font-size"] + shadowObj.units
-  };\n  text-shadow: ${shadow};\n}`;
-  var resultrgb = `{\n  font-size: ${
-    shadowObj["range-font-size"] + shadowObj.units
-  };\n  text-shadow: ${$("h1").css("text-shadow")};\n}`;
-
-  $("#resulthex").val(resulthex);
-  $("#resultrgb").val(resultrgb);
+      .toUpperCase();
+  return colorhex;
 }
 
-changeShadow();
+function getColorrgb(color, opacity) {
+  let colorrgb =
+    " rgb(" +
+    parseInt(color.slice(1, 3), 16) +
+    ", " +
+    parseInt(color.slice(3, 5), 16) +
+    ", " +
+    parseInt(color.slice(5, 7), 16) +
+    ", " +
+    opacity +
+    ")";
+  return colorrgb;
+}
 
-$(".range, #colorpick").on("input", function () {
+function getShadow(units, offsetX, offsetY, blur, color) {
+  let shadow =
+    offsetX + units + " " + offsetY + units + " " + blur + units + " " + color;
+  return shadow;
+}
+
+function changeTextShadow() {
+  var shadowhex = getShadow(
+    shadowObj.units,
+    shadowObj["tsg_range-offset-X"],
+    shadowObj["tsg_range-offset-Y"],
+    shadowObj["tsg_range-blur"],
+    getColorhex(shadowObj["tsg_colorpick"], shadowObj["tsg_range-opacity"])
+  );
+  var shadowrgb = getShadow(
+    shadowObj.units,
+    shadowObj["tsg_range-offset-X"],
+    shadowObj["tsg_range-offset-Y"],
+    shadowObj["tsg_range-blur"],
+    getColorrgb(shadowObj["tsg_colorpick"], shadowObj["tsg_range-opacity"])
+  );
+
+  $("h1").css("font-size", shadowObj["tsg_range-font-size"] + shadowObj.units);
+  $("h1").css("text-shadow", shadowhex);
+
+  var resulthex = `{\n  font-size: ${
+    shadowObj["tsg_range-font-size"] + shadowObj.units
+  };\n  text-shadow: ${shadowhex};\n}`;
+  var resultrgb = `{\n  font-size: ${
+    shadowObj["tsg_range-font-size"] + shadowObj.units
+  };\n  text-shadow: ${shadowrgb};\n}`;
+
+  $("#tsg_resulthex").val(resulthex);
+  $("#tsg_resultrgb").val(resultrgb);
+}
+
+changeTextShadow();
+
+$(".range, #tsg_colorpick").on("input", function () {
   shadowObj[$(this).attr("id")] = $("#" + $(this).attr("id")).val();
   $(this).next().children(":first").text($(this).val());
-  changeShadow();
+  changeTextShadow();
 });
