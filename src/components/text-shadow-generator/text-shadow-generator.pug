@@ -25,7 +25,7 @@ mixin card-section(title, span1, span2)
             .card-header Color
             .card-body
                 +card-section('Color', '#005CC8', '')
-                    input#tsg_colorpick(type="color", value="#005CC8")
+                    input#tsg_colorpick(type="color", value="#005CC8").colorpick
                 +card-section('Opacity', '1', '')
                     input#tsg_range-opacity(type="range", name="", min="0", max="1", step="0.01", value="1").range
         .card 

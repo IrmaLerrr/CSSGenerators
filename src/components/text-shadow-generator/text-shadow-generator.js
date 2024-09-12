@@ -52,8 +52,8 @@ function changeTextShadow() {
     getColorrgb(shadowObj["tsg_colorpick"], shadowObj["tsg_range-opacity"])
   );
 
-  $("h1").css("font-size", shadowObj["tsg_range-font-size"] + shadowObj.units);
-  $("h1").css("text-shadow", shadowhex);
+  $(".tsg_title").css("font-size", shadowObj["tsg_range-font-size"] + shadowObj.units);
+  $(".tsg_title").css("text-shadow", shadowhex);
 
   var resulthex = `{\n  font-size: ${
     shadowObj["tsg_range-font-size"] + shadowObj.units

@@ -19,9 +19,19 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 40px;
-  text-shadow: 2px 2px 4px #005cc8ff;
   height: 100px;
   line-height: 100px;
+}
+.tsg_title{
+  /* text-shadow: 2px 2px 4px #005cc8ff; */
+}
+.bsg_title{
+  background-color: #ffffff;
+  border-radius: 2rem;
+  width: max-content;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  /* box-shadow: 4px 4px 8px -1px #005cc8ff; */
 }
 h4 {
   padding: 0;
@@ -90,7 +100,7 @@ textarea {
   font-family: monospace;
   grid-column: span 2;
 }
-#tsg_colorpick {
+.colorpick {
   background-color: transparent;
   border: none;
   outline: none;
@@ -99,7 +109,7 @@ textarea {
   padding: 0;
   grid-column: span 2;
 }
-#tsg_colorpick ~ div{
+.colorpick ~ div{
   padding: 1rem;
   grid-column: span 2;
   font-weight: bold;
@@ -203,7 +213,7 @@ textarea {
                         <h4>Color</h4>
                       </div>
                       <div class="card-section-body">
-                        <input id="tsg_colorpick" type="color" value="#005CC8">
+                        <input class="colorpick" id="tsg_colorpick" type="color" value="#005CC8">
                         <div><span>#005CC8</span><span></span></div>
                       </div>
                     </div>
@@ -244,6 +254,99 @@ textarea {
         </div>
       </div>
       <script type="module" src="src/components/text-shadow-generator/text-shadow-generator.js"></script>
+      <div class="bsg">
+        <h1 class="bsg_title">BOX Shadow Generator</h1>
+        <div class="section bsg_section">
+          <div class="card"> 
+            <div class="card-header">Settings</div>
+            <div class="card-body">
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Offset X</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="bsg_range-offset-X" type="range" name="" min="-20" max="20" step="1" value="2">
+                        <div><span>2</span><span>px</span></div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Offset Y</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="bsg_range-offset-Y" type="range" name="" min="-20" max="20" step="1" value="2">
+                        <div><span>2</span><span>px</span></div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Blur</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="bsg_range-blur" type="range" name="" min="0" max="20" step="1" value="4">
+                        <div><span>4</span><span>px</span></div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Spread</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="bsg_range-spread" type="range" name="" min="-20" max="20" step="1" value="0">
+                        <div><span>4</span><span>px</span></div>
+                      </div>
+                    </div>
+            </div>
+          </div>
+          <div class="card"> 
+            <div class="card-header">Color</div>
+            <div class="card-body">
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Color</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="colorpick" id="bsg_colorpick" type="color" value="#005CC8">
+                        <div><span>#005CC8</span><span></span></div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Opacity</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="bsg_range-opacity" type="range" name="" min="0" max="1" step="0.01" value="1">
+                        <div><span>1</span><span></span></div>
+                      </div>
+                    </div>
+            </div>
+          </div>
+          <div class="card"> 
+            <div class="card-header">Result</div>
+            <div class="card-body">
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>CSS code with HEX</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <textarea id="bsg_resulthex" name="resulthex" rows="6" readonly> </textarea>
+                        <div><span></span><span></span></div>
+                      </div>
+                    </div>
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>CSS code with RGB</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <textarea id="bsg_resultrgb" name="resultrdb" rows="6" readonly> </textarea>
+                        <div><span></span><span></span></div>
+                      </div>
+                    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="module" src="src/components/box-shadow-generator/box-shadow-generator.js"></script>
     </div>
   </body>
 </html>
