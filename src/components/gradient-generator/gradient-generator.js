@@ -1,12 +1,13 @@
-var shadowObj = {
-  units: "px",
-  "bsg_range-offset-X": $("#bsg_range-offset-X").val(),
-  "bsg_range-offset-Y": $("#bsg_range-offset-Y").val(),
-  "bsg_range-blur": $("#bsg_range-blur").val(),
-  "bsg_range-spread": $("#bsg_range-spread").val(),
-  bsg_colorpick: $("#bsg_colorpick").val(),
-  "bsg_range-opacity": $("#bsg_range-opacity").val(),
+var gradientObj = {
+  count: 2,
+  gg_radio: $("#gg_radio").val(),
+  "gg_range-angle": $("#gg_range-angle").val(),
 };
+for (let i = 1; i <= gradientObj.count; i++) {
+  gradientObj["gg_colorpick" + i] = $(`#gg_colorpick${i}`).val();
+  gradientObj["gg_range-opacity" + i] = $(`#gg_range-opacity${i}`).val();
+  gradientObj["gg_range-position" + i] = $(`#gg_range-position${i}`).val();
+}
 
 function getColorhex(color, opacity) {
   let colorhex =
@@ -31,52 +32,63 @@ function getColorrgb(color, opacity) {
   return colorrgb;
 }
 
-function getBoxShadow(units, array, color) {
-  let shadow = "";
-  for (let i = 0; i < array.length; i++) {
-    shadow = shadow + array[i] + units + " ";
+function getGradient(type, angle, array) {
+  let gradient = "";
+  for (let i = 0; i < array.length; i += 2) {
+    gradient = gradient + array[i] + " " + array[i + 1] + "%, ";
   }
-  shadow = shadow + color;
-  return shadow;
+  gradient = type + "(" + angle + "deg, " + gradient.slice(0,-2) + ")";
+  return gradient;
 }
 
-function changeTextShadow() {
+function changeGradient() {
 
-  var shadowhex = getBoxShadow(
-    shadowObj.units,
+  var gradienthex = getGradient(
+    gradientObj.gg_radio, 
+    gradientObj["gg_range-angle"],
     [
-      shadowObj["bsg_range-offset-X"],
-      shadowObj["bsg_range-offset-Y"],
-      shadowObj["bsg_range-blur"],
-      shadowObj["bsg_range-spread"],
-    ],
-    getColorhex(shadowObj["bsg_colorpick"], shadowObj["bsg_range-opacity"])
-  );
-  var shadowrgb = getBoxShadow(
-    shadowObj.units,
-    [
-      shadowObj["bsg_range-offset-X"],
-      shadowObj["bsg_range-offset-Y"],
-      shadowObj["bsg_range-blur"],
-      shadowObj["bsg_range-spread"],
-    ],
-    getColorrgb(shadowObj["bsg_colorpick"], shadowObj["bsg_range-opacity"])
+      getColorhex(gradientObj["gg_colorpick1"],gradientObj["gg_range-opacity1"]), 
+      gradientObj["gg_range-position1"],
+      getColorhex(gradientObj["gg_colorpick2"],gradientObj["gg_range-opacity2"]), 
+      gradientObj["gg_range-position2"]
+    ]
   );
 
+  var gradientrgb = getGradient(
+    gradientObj.gg_radio, 
+    gradientObj["gg_range-angle"],
+    [
+      getColorrgb(gradientObj["gg_colorpick1"],gradientObj["gg_range-opacity1"]), 
+      gradientObj["gg_range-position1"],
+      getColorrgb(gradientObj["gg_colorpick2"],gradientObj["gg_range-opacity2"]), 
+      gradientObj["gg_range-position2"]
+    ]
+  );
 
-  $(".bsg_title").css("box-shadow", shadowhex);
+  $(".gg_title").css("background", gradienthex);
 
-  var resulthex = `{\n  box-shadow: ${shadowhex};\n}`;
-  var resultrgb = `{\n  box-shadow: ${shadowrgb};\n}`;
+  var resulthex = `{\n  background: ${gradienthex};\n}`;
+  var resultrgb = `{\n  background: ${gradientrgb};\n}`;
 
-  $("#bsg_resulthex").val(resulthex);
-  $("#bsg_resultrgb").val(resultrgb);
+  $("#gg_resulthex").val(resulthex);
+  $("#gg_resultrgb").val(resultrgb);
 }
 
-changeTextShadow();
+changeGradient();
 
-$(".range, .colorpick").on("input", function () {
-  shadowObj[$(this).attr("id")] = $("#" + $(this).attr("id")).val();
+$(".range, .colorpick, .radio").on("input", function () {
+  gradientObj[$(this).attr("id")] = $("#" + $(this).attr("id")).val();
   $(this).next().children(":first").text($(this).val());
-  changeTextShadow();
+  changeGradient();
+  alert($(this).attr("id").val())
 });
+
+$(".add-btn").on("click", function () {
+  // alert('hey')
+  // var copy = $('.gg_section').html();
+  // alert(copy)
+  // $(this).parent().parent().parent().parent().clone().after('.result_card');
+  $('.result_card').before($(this).parent().parent().parent().parent().clone())
+// alert(copy) 
+});
+

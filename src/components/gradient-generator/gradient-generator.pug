@@ -1,33 +1,39 @@
 .gg
     h1.gg_title Gradient Generator
     .section.gg_section
-        .card 
+        .card.color_card 
             .card-header Color 1
             .card-body
-                +card-section('Color', '#FFFFFF', '')
+                +card-section('Color', '#FFFFFF', '')(class="colorpick-card-secton")
                     input#gg_colorpick1(type="color", value="#FFFFFF").colorpick
                 +card-section('Opacity', '1', '')
                     input#gg_range-opacity1(type="range", name="", min="0", max="1", step="0.01", value="1").range
                 +card-section('Position', '0', '%')
-                    input#gg_range-position(type="range", name="", min="0", max="100", step="1", value="0").range
-        .card 
+                    input#gg_range-position1(type="range", name="", min="0", max="100", step="1", value="0").range
+                +card-section('', '', '')(class="btn-section")
+                    button.btn.add-btn#add-color1 Add Color
+                    button.btn#delete-color1 Delete Color
+        .card.color_card 
             .card-header Color 2
             .card-body
-                +card-section('Color', '#005CC8', '')
-                    input#gg_colorpick(type="color", value="#005CC8").colorpick
+                +card-section('Color', '#005CC8', '')(class="colorpick-card-secton")
+                    input#gg_colorpick2(type="color", value="#005CC8").colorpick
                 +card-section('Opacity', '1', '')
-                    input#gg_range-opacity(type="range", name="", min="0", max="1", step="0.01", value="1").range
+                    input#gg_range-opacity2(type="range", name="", min="0", max="1", step="0.01", value="1").range
                 +card-section('Position', '0', '%')
-                    input#gg_range-position(type="range", name="", min="0", max="100", step="1", value="100").range
-        .card 
+                    input#gg_range-position2(type="range", name="", min="0", max="100", step="1", value="100").range
+                +card-section('', '', '')(class="btn-section")
+                    button.btn.add-btn#add-color2 Add Color
+                    button.btn#delete-color2 Delete Color
+        .card.result_card 
             .card-header Result
             .card-body
-                +card-section('Gradient Type', '', '')(class="gg_radio")
+                +card-section('Gradient Type', '', '')(class="radio-section")
                     label.gg_label
-                        input(type="radio", value="linear", name="rad", id="gg_radio" checked)
+                        input(type="radio", value="linear-gradient", name="rad", id="gg_radio" checked).radio 
                         span Linear
                     label.gg_label
-                        input(type="radio", value="radial", name="rad", id="gg_radio") 
+                        input(type="radio", value="radial-gradient", name="rad", id="gg_radio").radio 
                         span Radial
                 +card-section('Angle', '0', 'deg')(class="gg_angle")
                     input#gg_range-angle(type="range", name="", min="0", max="360", step="1", value="0").range

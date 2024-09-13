@@ -12,10 +12,7 @@
                     input#bsg_range-blur(type="range", name="", min="0", max="20", step="1", value="4").range
                 +card-section('Spread', '4', 'px')
                     input#bsg_range-spread(type="range", name="", min="-20", max="20", step="1", value="0").range
-        .card 
-            .card-header Color
-            .card-body
-                +card-section('Color', '#005CC8', '')
+                +card-section('Color', '#005CC8', '')(class="colorpick-card-secton")
                     input#bsg_colorpick(type="color", value="#005CC8").colorpick
                 +card-section('Opacity', '1', '')
                     input#bsg_range-opacity(type="range", name="", min="0", max="1", step="0.01", value="1").range

@@ -22,15 +22,15 @@ h1 {
   height: 100px;
   line-height: 100px;
 }
-.bsg_title{
+.bsg_title {
   background-color: #ffffff;
   border-radius: 2rem;
   width: max-content;
   margin: 3rem auto;
   padding: 0 2rem;
 }
-.gg_title{
-  background: linear-gradient(0deg, #FFFFFF 0%, #005CC8 100%);
+.gg_title {
+  background: linear-gradient(0deg, #ffffff 0%, #005cc8 100%);
   border-radius: 2rem;
   width: max-content;
   margin: 3rem auto;
@@ -49,13 +49,13 @@ h4 {
 .card {
   background-color: #ffffff;
   border-radius: 1.5rem;
-  display: grid;
-  grid-template-rows: max-content 1fr;
-  border: 2px solid #005cc8ff;
+  /* display: grid;
+  grid-template-rows: max-content 1fr; */
+  /* border: 2px solid #005cc8ff; */
 }
 .card-header {
   background-color: #005cc8ff;
-  padding: 1rem 0.5rem;
+  padding: 1.5rem;
   color: white;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -67,7 +67,6 @@ h4 {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-content: space-between;
 }
 .range {
   width: 90%;
@@ -88,9 +87,7 @@ h4 {
   justify-items: end;
   padding: 0.5rem;
 }
-/* .card-section-body span:nth-of-type(2) {
-  padding: 0 0.5rem 0 0;
-} */
+
 textarea {
   width: 100%;
   height: auto;
@@ -107,23 +104,54 @@ textarea {
   border: none;
   outline: none;
   width: 100%;
-  height: 10rem;
   padding: 0;
-  grid-column: span 2;
+  height: 5rem;
 }
-.gg_label{
-  grid-column: span 2;
-  justify-self: center;
-}
-
-.colorpick ~ div{
-  padding: 1rem;
-  grid-column: span 2;
-  font-weight: bold;
+.colorpick-card-secton .card-section-body {
+  justify-items: center;
+  grid-template-columns: 1fr;
+  align-items: center;
   text-transform: uppercase;
-  justify-self: center;
 }
 
+ .btn-section .card-section-body{
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+ }
+ .radio-section .card-section-body{
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+ }
+ .radio{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+ }
+ .gg_label{
+  display: flex;
+  align-items: center;
+ }
+.btn {
+  border: none;
+  outline: none;
+  padding: 1rem;
+  justify-self: center;
+  border-radius: 1rem;
+  background-color: #f0f0f0;
+}
+.btn:hover {
+  background-color: #e6e6e6;
+}
+.btn:active {
+  background-color: #f0f0f0;
+}
 #btn_mode {
   position: absolute;
   right: 1rem;
@@ -139,7 +167,13 @@ textarea {
   color: white;
   font-weight: 600;
 }
-select{
+#btn_mode:hover {
+  background-color: rgb(40, 140, 255);
+}
+#btn_mode:active {
+  background-color: #005cc8ff;
+}
+select {
   appearance: none;
   position: absolute;
   width: min-content;
@@ -156,7 +190,6 @@ select{
   font-weight: 600;
   text-align: center;
 }
-
 
 /* Portrait tablets and medium desktops */
 @media (min-width: 992px) {
@@ -199,16 +232,6 @@ select{
             <div class="card-body">
                     <div class="card-section">
                       <div class="card-section-header"> 
-                        <h4>Font Size</h4>
-                      </div>
-                      <div class="card-section-body">
-                        <input class="range" id="tsg_range-font-size" type="range" name="" min="8" max="72" step="1" value="40">
-                        <div><span>40</span><span>px</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-section">
-                      <div class="card-section-header"> 
                         <h4>Offset X</h4>
                       </div>
                       <div class="card-section-body">
@@ -237,12 +260,7 @@ select{
                         </div>
                       </div>
                     </div>
-            </div>
-          </div>
-          <div class="card"> 
-            <div class="card-header">Color</div>
-            <div class="card-body">
-                    <div class="card-section">
+                    <div class="card-section colorpick-card-secton">
                       <div class="card-section-header"> 
                         <h4>Color</h4>
                       </div>
@@ -267,6 +285,16 @@ select{
           <div class="card"> 
             <div class="card-header">Result</div>
             <div class="card-body">
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Font Size</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="tsg_range-font-size" type="range" name="" min="8" max="72" step="1" value="40">
+                        <div><span>40</span><span>px</span>
+                        </div>
+                      </div>
+                    </div>
                     <div class="card-section">
                       <div class="card-section-header"> 
                         <h4>CSS code with HEX</h4>
@@ -334,12 +362,7 @@ select{
                         </div>
                       </div>
                     </div>
-            </div>
-          </div>
-          <div class="card"> 
-            <div class="card-header">Color</div>
-            <div class="card-body">
-                    <div class="card-section">
+                    <div class="card-section colorpick-card-secton">
                       <div class="card-section-header"> 
                         <h4>Color</h4>
                       </div>
@@ -388,10 +411,10 @@ select{
       <div class="gg">
         <h1 class="gg_title">Gradient Generator</h1>
         <div class="section gg_section">
-          <div class="card"> 
+          <div class="card color_card"> 
             <div class="card-header">Color 1</div>
             <div class="card-body">
-                    <div class="card-section">
+                    <div class="card-section colorpick-card-secton">
                       <div class="card-section-header"> 
                         <h4>Color</h4>
                       </div>
@@ -416,22 +439,31 @@ select{
                         <h4>Position</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="gg_range-position" type="range" name="" min="0" max="100" step="1" value="0">
+                        <input class="range" id="gg_range-position1" type="range" name="" min="0" max="100" step="1" value="0">
                         <div><span>0</span><span>%</span>
                         </div>
                       </div>
                     </div>
+                    <div class="card-section btn-section">
+                      <div class="card-section-header"> 
+                        <h4></h4>
+                      </div>
+                      <div class="card-section-body">
+                        <button class="btn add-btn" id="add-color1">Add Color</button>
+                        <button class="btn" id="delete-color1">Delete Color</button>
+                      </div>
+                    </div>
             </div>
           </div>
-          <div class="card"> 
+          <div class="card color_card"> 
             <div class="card-header">Color 2</div>
             <div class="card-body">
-                    <div class="card-section">
+                    <div class="card-section colorpick-card-secton">
                       <div class="card-section-header"> 
                         <h4>Color</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="colorpick" id="gg_colorpick" type="color" value="#005CC8">
+                        <input class="colorpick" id="gg_colorpick2" type="color" value="#005CC8">
                         <div><span>#005CC8</span>
                         </div>
                       </div>
@@ -441,7 +473,7 @@ select{
                         <h4>Opacity</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="gg_range-opacity" type="range" name="" min="0" max="1" step="0.01" value="1">
+                        <input class="range" id="gg_range-opacity2" type="range" name="" min="0" max="1" step="0.01" value="1">
                         <div><span>1</span>
                         </div>
                       </div>
@@ -451,26 +483,35 @@ select{
                         <h4>Position</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="gg_range-position" type="range" name="" min="0" max="100" step="1" value="100">
+                        <input class="range" id="gg_range-position2" type="range" name="" min="0" max="100" step="1" value="100">
                         <div><span>0</span><span>%</span>
                         </div>
                       </div>
                     </div>
+                    <div class="card-section btn-section">
+                      <div class="card-section-header"> 
+                        <h4></h4>
+                      </div>
+                      <div class="card-section-body">
+                        <button class="btn add-btn" id="add-color2">Add Color</button>
+                        <button class="btn" id="delete-color2">Delete Color</button>
+                      </div>
+                    </div>
             </div>
           </div>
-          <div class="card"> 
+          <div class="card result_card"> 
             <div class="card-header">Result</div>
             <div class="card-body">
-                    <div class="card-section gg_radio">
+                    <div class="card-section radio-section">
                       <div class="card-section-header"> 
                         <h4>Gradient Type</h4>
                       </div>
                       <div class="card-section-body">
                         <label class="gg_label">
-                          <input type="radio" value="linear" name="rad" id="gg_radio" checked><span>Linear</span>
+                          <input class="radio" type="radio" value="linear-gradient" name="rad" id="gg_radio" checked><span>Linear</span>
                         </label>
                         <label class="gg_label">
-                          <input type="radio" value="radial" name="rad" id="gg_radio"><span>Radial</span>
+                          <input class="radio" type="radio" value="radial-gradient" name="rad" id="gg_radio"><span>Radial</span>
                         </label>
                       </div>
                     </div>
