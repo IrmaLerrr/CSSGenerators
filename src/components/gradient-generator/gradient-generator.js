@@ -1,12 +1,15 @@
-var gradientObj = {
-  count: 2,
-  gg_radio: $("#gg_radio").val(),
-  "gg_range-angle": $("#gg_range-angle").val(),
-};
-for (let i = 1; i <= gradientObj.count; i++) {
-  gradientObj["gg_colorpick" + i] = $(`#gg_colorpick${i}`).val();
-  gradientObj["gg_range-opacity" + i] = $(`#gg_range-opacity${i}`).val();
-  gradientObj["gg_range-position" + i] = $(`#gg_range-position${i}`).val();
+var gradientObj = {};
+function changeGradientObj() {
+  gradientObj = {
+    count: $(".color-card").length,
+    gg_radio: $("#gg_radio").val(),
+    "gg_range-angle": $("#gg_range-angle").val(),
+  };
+  for (let i = 1; i <= gradientObj.count; i++) {
+    gradientObj["gg_colorpick" + i] = $(`#gg_colorpick${i}`).val();
+    gradientObj["gg_range-opacity" + i] = $(`#gg_range-opacity${i}`).val();
+    gradientObj["gg_range-position" + i] = $(`#gg_range-position${i}`).val();
+  }
 }
 
 function getColorhex(color, opacity) {
@@ -32,40 +35,41 @@ function getColorrgb(color, opacity) {
   return colorrgb;
 }
 
-function getGradient(type, angle, array) {
+function getGradient(color) {
   let gradient = "";
-  for (let i = 0; i < array.length; i += 2) {
-    gradient = gradient + array[i] + " " + array[i + 1] + "%, ";
+
+  for (let i = 1; i <= gradientObj.count; i++) {
+    gradient =
+      gradient + (color === "HEX"
+        ? getColorhex(
+            gradientObj["gg_colorpick" + i],
+            gradientObj["gg_range-opacity" + i]
+          )
+        : getColorrgb(
+            gradientObj["gg_colorpick" + i],
+            gradientObj["gg_range-opacity" + i]
+          )) +
+          " " +
+          gradientObj["gg_range-position" + i] +
+          "%, ";
   }
-  gradient = type + "(" + angle + "deg, " + gradient.slice(0,-2) + ")";
+  gradient =
+    gradientObj.gg_radio +
+    "(" +
+    gradientObj["gg_range-angle"] +
+    "deg, " +
+    gradient.slice(0, -2) +
+    ")";
   return gradient;
 }
 
 function changeGradient() {
 
-  var gradienthex = getGradient(
-    gradientObj.gg_radio, 
-    gradientObj["gg_range-angle"],
-    [
-      getColorhex(gradientObj["gg_colorpick1"],gradientObj["gg_range-opacity1"]), 
-      gradientObj["gg_range-position1"],
-      getColorhex(gradientObj["gg_colorpick2"],gradientObj["gg_range-opacity2"]), 
-      gradientObj["gg_range-position2"]
-    ]
-  );
-
-  var gradientrgb = getGradient(
-    gradientObj.gg_radio, 
-    gradientObj["gg_range-angle"],
-    [
-      getColorrgb(gradientObj["gg_colorpick1"],gradientObj["gg_range-opacity1"]), 
-      gradientObj["gg_range-position1"],
-      getColorrgb(gradientObj["gg_colorpick2"],gradientObj["gg_range-opacity2"]), 
-      gradientObj["gg_range-position2"]
-    ]
-  );
+  var gradienthex = getGradient('HEX');
+  var gradientrgb = getGradient('RGB');
 
   $(".gg_title").css("background", gradienthex);
+  $(".gg_title").css("background", gradientrgb);
 
   var resulthex = `{\n  background: ${gradienthex};\n}`;
   var resultrgb = `{\n  background: ${gradientrgb};\n}`;
@@ -74,21 +78,49 @@ function changeGradient() {
   $("#gg_resultrgb").val(resultrgb);
 }
 
+changeGradientObj();
 changeGradient();
 
-$(".range, .colorpick, .radio").on("input", function () {
-  gradientObj[$(this).attr("id")] = $("#" + $(this).attr("id")).val();
+$(document).on("input", ".range, .colorpick, .radio", function () {
+  gradientObj[$(this).attr("id")] = $(this).val();
   $(this).next().children(":first").text($(this).val());
   changeGradient();
-  alert($(this).attr("id").val())
 });
 
-$(".add-btn").on("click", function () {
-  // alert('hey')
-  // var copy = $('.gg_section').html();
-  // alert(copy)
-  // $(this).parent().parent().parent().parent().clone().after('.result_card');
-  $('.result_card').before($(this).parent().parent().parent().parent().clone())
-// alert(copy) 
+$(document).on("click", ".add-btn", function () {
+  $(".result-card").before($(this).parent().parent().parent().parent().clone());
+  reassignID();
+  changeGradientObj();
+  changeGradient();
+});
+$(document).on("click", ".delete-btn", function () {
+  $(this).parent().parent().parent().parent().remove();
+  reassignID();
+  changeGradientObj();
+  changeGradient();
 });
 
+function reassignID() {
+  $(".color-card").each(function (index) {
+    index++;
+    $(this)
+      .find(".card-header")
+      .text("Color " + index);
+    $(this)
+      .find(".colorpick")
+      .attr("id", "gg_colorpick" + index)
+      .attr("title", "#gg_colorpick" + index);
+    $(this)
+      .find(".range-opacity")
+      .attr("id", "gg_range-opacity" + index)
+      .attr("title", "#gg_range-opacity" + index);
+    $(this)
+      .find(".range-position")
+      .attr("id", "gg_range-position" + index)
+      .attr("title", "#gg_range-position" + index);
+    $(this)
+      .find(".add-btn")
+      .attr("id", "add-color" + index)
+      .attr("title", "add-color" + index);
+  });
+}
