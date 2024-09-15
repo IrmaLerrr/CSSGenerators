@@ -12,7 +12,7 @@
                     input#gg_range-position1(type="range", name="", min="0", max="100", step="1", value="0").range.range-position
                 +card-section('', '', '')(class="btn-section")
                     button.btn.add-btn#add-color1 Add Color
-                    button.btn#delete-color1 Delete Color
+                    button.btn.delete-btn#delete-color1 Delete Color
         .card.color-card 
             .card-header Color 2
             .card-body
@@ -20,7 +20,7 @@
                     input#gg_colorpick2(type="color", value="#005CC8").colorpick
                 +card-section('Opacity', '1', '')
                     input#gg_range-opacity2(type="range", name="", min="0", max="1", step="0.01", value="1").range.range-opacity
-                +card-section('Position', '0', '%')
+                +card-section('Position', '100', '%')
                     input#gg_range-position2(type="range", name="", min="0", max="100", step="1", value="100").range.range-position
                 +card-section('', '', '')(class="btn-section")
                     button.btn.add-btn#add-color2 Add Color
