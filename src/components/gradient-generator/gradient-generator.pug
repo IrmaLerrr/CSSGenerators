@@ -30,13 +30,20 @@
             .card-body
                 +card-section('Gradient Type', '', '')(class="radio-section")
                     label.gg_label
-                        input(type="radio", value="linear-gradient", name="rad", id="gg_radio" checked).radio 
+                        input(type="radio", value="linear-gradient", name="gg_radio_type", id="gg_radio_type1" checked).radio 
                         span Linear
                     label.gg_label
-                        input(type="radio", value="radial-gradient", name="rad", id="gg_radio").radio 
+                        input(type="radio", value="radial-gradient", name="gg_radio_type", id="gg_radio_type2").radio 
                         span Radial
-                +card-section('Angle', '0', 'deg')(class="gg_angle")
-                    input#gg_range-angle(type="range", name="", min="0", max="360", step="1", value="0").range
+                +card-section('With position', '', '')(class="radio-section")
+                    label.gg_label
+                        input(type="radio", value="True", name="gg_radio_position", id="gg_radio_position1" checked).radio 
+                        span Yes
+                    label.gg_label
+                        input(type="radio", value="False", name="gg_radio_position", id="gg_radio_position2").radio 
+                        span No
+                +card-section('Angle', '90', 'deg')(class="gg_angle")
+                    input#gg_range-angle(type="range", name="", min="0", max="360", step="1", value="90").range
                 +card-section('CSS code with HEX', '', '')
                     textarea#gg_resulthex(name="resulthex",rows="6", readonly) 
                 +card-section('CSS code with RGB', '', '')

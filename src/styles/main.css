@@ -2,6 +2,8 @@ body {
   background-color: #dddddd;
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
+  overflow-x: hidden;
+  margin: 0;
 }
 .container {
   width: 90%;
@@ -14,22 +16,25 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 40px;
-  height: 100px;
-  line-height: 100px;
+  /* height: 100px; */
+  line-height: 150%;
 }
 .bsg_title {
   background-color: #ffffff;
   border-radius: 2rem;
   width: max-content;
+  /* width: 100px; */
   margin: 3rem auto;
   padding: 0 2rem;
 }
 .gg_title {
   background: linear-gradient(0deg, #ffffff 0%, #005cc8 100%);
   border-radius: 2rem;
-  width: max-content;
+  /* width: max-content; */
+  /* width: 100%; */
+  font-size: 5vw;
   margin: 3rem auto;
-  padding: 0 2rem;
+  padding: 2rem 2rem;
 }
 h4 {
   padding: 0;
@@ -38,6 +43,7 @@ h4 {
 .section {
   display: flex;
   flex-wrap: wrap;
+  /* display: grid; */
   justify-content: center;
   gap: 2rem;
 }
@@ -109,17 +115,17 @@ textarea {
   text-transform: uppercase;
 }
 
- .btn-section .card-section-body{
+.btn-section .card-section-body {
   justify-items: center;
   grid-template-columns: 1fr 1fr;
   align-items: center;
- }
- .radio-section .card-section-body{
+}
+.radio-section .card-section-body {
   justify-items: center;
   grid-template-columns: 1fr 1fr;
   align-items: center;
- }
- .radio{
+}
+.radio {
   background-color: transparent;
   border: none;
   outline: none;
@@ -128,11 +134,11 @@ textarea {
   width: 2rem;
   height: 2rem;
   border-radius: 1rem;
- }
- .gg_label{
+}
+.gg_label {
   display: flex;
   align-items: center;
- }
+}
 .btn {
   border: none;
   outline: none;
@@ -185,24 +191,20 @@ select {
   font-weight: 600;
   text-align: center;
 }
-
-/* Portrait tablets and medium desktops */
-@media (min-width: 992px) {
-  .card {
-    flex-basis: calc((100% / 3) - 4rem);
-  }
-}
-
-/* Portrait tablets and small desktops */
-@media (min-width: 768px) and (max-width: 991px) {
-  .card {
-    flex-basis: calc((100% / 2) - 2rem);
-  }
-}
-
-/* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
   .card {
     flex: 1 1 100%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .card {
+    flex: 1 1 calc((100% / 2) - 2rem);
+    /* flex-basis: calc((100% / 2) - 2rem); */
+  }
+}
+@media (min-width: 992px) {
+  .card {
+    flex: 1 1 calc((100% / 3) - 4rem);
+    /* flex-basis: calc((100% / 3) - 4rem); */
   }
 }
