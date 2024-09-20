@@ -29,15 +29,13 @@ h1 {
   background-color: #ffffff;
   border-radius: 2rem;
   width: max-content;
-  /* width: 100px; */
+  font-size: 40px;
   margin: 3rem auto;
-  padding: 0 2rem;
+  padding: 1rem 3rem;
 }
 .gg_title {
   background: linear-gradient(0deg, #ffffff 0%, #005cc8 100%);
   border-radius: 2rem;
-  /* width: max-content; */
-  /* width: 100%; */
   font-size: 5vw;
   margin: 3rem auto;
   padding: 2rem 2rem;
@@ -224,21 +222,21 @@ select {
       <button id="btn_mode" mode="day">Day mode</button>
       <select id="select_generator" name="">
         <option value="tsg">Text shadow generator</option>
-        <option value="bsg">Box shadow generator</option>
-        <option value="gg" selected>Gradient generator</option>
+        <option value="bsg" selected>Box shadow generator</option>
+        <option value="gg">Gradient generator</option>
       </select>
       <div class="tsg">
         <h1 class="tsg_title">Text Shadow Generator</h1>
         <div class="section tsg_section">
-          <div class="card"> 
-            <div class="card-header">Settings</div>
+          <div class="card tsg_shadow-card"> 
+            <div class="card-header">Shadow 1</div>
             <div class="card-body">
                     <div class="card-section">
                       <div class="card-section-header"> 
                         <h4>Offset X</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="tsg_range-offset-X" type="range" name="" min="-20" max="20" step="1" value="2">
+                        <input class="range range-offset-X" id="tsg_range-offset-X1" type="range" name="" min="-20" max="20" step="1" value="2">
                         <div><span>2</span><span>px</span>
                         </div>
                       </div>
@@ -248,7 +246,7 @@ select {
                         <h4>Offset Y</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="tsg_range-offset-Y" type="range" name="" min="-20" max="20" step="1" value="2">
+                        <input class="range range-offset-Y" id="tsg_range-offset-Y1" type="range" name="" min="-20" max="20" step="1" value="2">
                         <div><span>2</span><span>px</span>
                         </div>
                       </div>
@@ -258,7 +256,7 @@ select {
                         <h4>Blur</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="tsg_range-blur" type="range" name="" min="0" max="20" step="1" value="4">
+                        <input class="range range-blur" id="tsg_range-blur1" type="range" name="" min="0" max="20" step="1" value="4">
                         <div><span>4</span><span>px</span>
                         </div>
                       </div>
@@ -268,7 +266,7 @@ select {
                         <h4>Color</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="colorpick" id="tsg_colorpick" type="color" value="#005CC8">
+                        <input class="colorpick" id="tsg_colorpick1" type="color" value="#005CC8">
                         <div><span>#005CC8</span>
                         </div>
                       </div>
@@ -278,14 +276,23 @@ select {
                         <h4>Opacity</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="tsg_range-opacity" type="range" name="" min="0" max="1" step="0.01" value="1">
+                        <input class="range range-opacity" id="tsg_range-opacity1" type="range" name="" min="0" max="1" step="0.01" value="1">
                         <div><span>1</span>
                         </div>
                       </div>
                     </div>
+                    <div class="card-section btn-section">
+                      <div class="card-section-header"> 
+                        <h4></h4>
+                      </div>
+                      <div class="card-section-body">
+                        <button class="btn tsg_add-btn" id="tsg_add-shadow1">Add Shadow</button>
+                        <button class="btn tsg_delete-btn" id="tsg_delete-shadow1">Delete Shadow</button>
+                      </div>
+                    </div>
             </div>
           </div>
-          <div class="card"> 
+          <div class="card tsg_result-card"> 
             <div class="card-header">Result</div>
             <div class="card-body">
                     <div class="card-section">
@@ -295,6 +302,16 @@ select {
                       <div class="card-section-body">
                         <input class="range" id="tsg_range-font-size" type="range" name="" min="8" max="72" step="1" value="40">
                         <div><span>40</span><span>px</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-section colorpick-card-secton">
+                      <div class="card-section-header"> 
+                        <h4>Color of TEXT</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="colorpick" id="tsg_colorpick-text" type="color" value="#000000">
+                        <div><span>#000000</span>
                         </div>
                       </div>
                     </div>
@@ -322,15 +339,28 @@ select {
       <div class="bsg">
         <h1 class="bsg_title">BOX Shadow Generator</h1>
         <div class="section bsg_section">
-          <div class="card"> 
-            <div class="card-header">Settings</div>
+          <div class="card shadow-card">
+            <div class="card-header">Shadow 1</div>
             <div class="card-body">
+                    <div class="card-section radio-section">
+                      <div class="card-section-header"> 
+                        <h4>Inset</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <label class="bsg_label">
+                          <input class="radio" type="radio" value="True" name="bsg_radio_type1" id="bsg_radio_type1"><span>Yes</span>
+                        </label>
+                        <label class="bsg_label">
+                          <input class="radio" type="radio" value="False" name="bsg_radio_type1" id="bsg_radio_type2" checked><span>No</span>
+                        </label>
+                      </div>
+                    </div>
                     <div class="card-section">
                       <div class="card-section-header"> 
                         <h4>Offset X</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="bsg_range-offset-X" type="range" name="" min="-20" max="20" step="1" value="2">
+                        <input class="range range-offset-X" id="bsg_range-offset-X1" type="range" name="" min="-20" max="20" step="1" value="2">
                         <div><span>2</span><span>px</span>
                         </div>
                       </div>
@@ -340,7 +370,7 @@ select {
                         <h4>Offset Y</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="bsg_range-offset-Y" type="range" name="" min="-20" max="20" step="1" value="2">
+                        <input class="range range-offset-Y" id="bsg_range-offset-Y1" type="range" name="" min="-20" max="20" step="1" value="2">
                         <div><span>2</span><span>px</span>
                         </div>
                       </div>
@@ -350,7 +380,7 @@ select {
                         <h4>Blur</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="bsg_range-blur" type="range" name="" min="0" max="20" step="1" value="4">
+                        <input class="range range-blur" id="bsg_range-blur1" type="range" name="" min="0" max="20" step="1" value="4">
                         <div><span>4</span><span>px</span>
                         </div>
                       </div>
@@ -360,7 +390,7 @@ select {
                         <h4>Spread</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="bsg_range-spread" type="range" name="" min="-20" max="20" step="1" value="0">
+                        <input class="range range-spread" id="bsg_range-spread1" type="range" name="" min="-20" max="20" step="1" value="0">
                         <div><span>4</span><span>px</span>
                         </div>
                       </div>
@@ -370,7 +400,7 @@ select {
                         <h4>Color</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="colorpick" id="bsg_colorpick" type="color" value="#005CC8">
+                        <input class="colorpick" id="bsg_colorpick1" type="color" value="#005CC8">
                         <div><span>#005CC8</span>
                         </div>
                       </div>
@@ -380,16 +410,55 @@ select {
                         <h4>Opacity</h4>
                       </div>
                       <div class="card-section-body">
-                        <input class="range" id="bsg_range-opacity" type="range" name="" min="0" max="1" step="0.01" value="1">
+                        <input class="range range-opacity" id="bsg_range-opacity1" type="range" name="" min="0" max="1" step="0.01" value="1">
                         <div><span>1</span>
                         </div>
                       </div>
                     </div>
+                    <div class="card-section btn-section">
+                      <div class="card-section-header"> 
+                        <h4></h4>
+                      </div>
+                      <div class="card-section-body">
+                        <button class="btn bsg_add-btn" id="bsg_add-shadow1">Add Shadow</button>
+                        <button class="btn bsg_delete-btn" id="bsg_delete-shadow1">Delete Shadow</button>
+                      </div>
+                    </div>
             </div>
           </div>
-          <div class="card"> 
+          <div class="card bsg_result-card">
             <div class="card-header">Result</div>
             <div class="card-body">
+                    <div class="card-section">
+                      <div class="card-section-header"> 
+                        <h4>Font Size</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="range" id="bsg_range-font-size" type="range" name="" min="8" max="72" step="1" value="40">
+                        <div><span>40</span><span>px</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-section colorpick-card-secton">
+                      <div class="card-section-header"> 
+                        <h4>Color of BOX</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="colorpick" id="bsg_colorpick-box" type="color" value="#FFFFFF">
+                        <div><span>#FFFFFF</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-section colorpick-card-secton">
+                      <div class="card-section-header"> 
+                        <h4>Color of TEXT</h4>
+                      </div>
+                      <div class="card-section-body">
+                        <input class="colorpick" id="bsg_colorpick-text" type="color" value="#000000">
+                        <div><span>#000000</span>
+                        </div>
+                      </div>
+                    </div>
                     <div class="card-section">
                       <div class="card-section-header"> 
                         <h4>CSS code with HEX</h4>

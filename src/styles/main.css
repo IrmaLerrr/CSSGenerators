@@ -23,15 +23,13 @@ h1 {
   background-color: #ffffff;
   border-radius: 2rem;
   width: max-content;
-  /* width: 100px; */
+  font-size: 40px;
   margin: 3rem auto;
-  padding: 0 2rem;
+  padding: 1rem 3rem;
 }
 .gg_title {
   background: linear-gradient(0deg, #ffffff 0%, #005cc8 100%);
   border-radius: 2rem;
-  /* width: max-content; */
-  /* width: 100%; */
   font-size: 5vw;
   margin: 3rem auto;
   padding: 2rem 2rem;

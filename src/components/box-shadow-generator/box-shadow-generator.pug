@@ -1,24 +1,40 @@
 .bsg
     h1.bsg_title BOX Shadow Generator
     .section.bsg_section
-        .card 
-            .card-header Settings
+        .card.shadow-card
+            .card-header Shadow 1
             .card-body
+                +card-section('Inset', '', '')(class="radio-section")
+                    label.bsg_label
+                        input(type="radio", value="True", name="bsg_radio_type1", id="bsg_radio_type1").radio 
+                        span Yes
+                    label.bsg_label
+                        input(type="radio", value="False", name="bsg_radio_type1", id="bsg_radio_type2" checked).radio 
+                        span No
                 +card-section('Offset X', '2', 'px')
-                    input#bsg_range-offset-X(type="range", name="", min="-20", max="20", step="1", value="2").range
+                    input#bsg_range-offset-X1(type="range", name="", min="-20", max="20", step="1", value="2").range.range-offset-X
                 +card-section('Offset Y', '2', 'px')
-                    input#bsg_range-offset-Y(type="range", name="", min="-20", max="20", step="1", value="2").range
+                    input#bsg_range-offset-Y1(type="range", name="", min="-20", max="20", step="1", value="2").range.range-offset-Y
                 +card-section('Blur', '4', 'px')
-                    input#bsg_range-blur(type="range", name="", min="0", max="20", step="1", value="4").range
+                    input#bsg_range-blur1(type="range", name="", min="0", max="20", step="1", value="4").range.range-blur
                 +card-section('Spread', '4', 'px')
-                    input#bsg_range-spread(type="range", name="", min="-20", max="20", step="1", value="0").range
+                    input#bsg_range-spread1(type="range", name="", min="-20", max="20", step="1", value="0").range.range-spread
                 +card-section('Color', '#005CC8', '')(class="colorpick-card-secton")
-                    input#bsg_colorpick(type="color", value="#005CC8").colorpick
+                    input#bsg_colorpick1(type="color", value="#005CC8").colorpick
                 +card-section('Opacity', '1', '')
-                    input#bsg_range-opacity(type="range", name="", min="0", max="1", step="0.01", value="1").range
-        .card 
+                    input#bsg_range-opacity1(type="range", name="", min="0", max="1", step="0.01", value="1").range.range-opacity
+                +card-section('', '', '')(class="btn-section")
+                    button.btn.bsg_add-btn#bsg_add-shadow1 Add Shadow
+                    button.btn.bsg_delete-btn#bsg_delete-shadow1 Delete Shadow
+        .card.bsg_result-card
             .card-header Result
             .card-body
+                +card-section('Font Size', '40', 'px')
+                    input#bsg_range-font-size(type="range", name="", min="8", max="72", step="1", value="40").range
+                +card-section('Color of BOX', '#FFFFFF', '')(class="colorpick-card-secton")
+                    input#bsg_colorpick-box(type="color", value="#FFFFFF").colorpick
+                +card-section('Color of TEXT', '#000000', '')(class="colorpick-card-secton")
+                    input#bsg_colorpick-text(type="color", value="#000000").colorpick
                 +card-section('CSS code with HEX', '', '')
                     textarea#bsg_resulthex(name="resulthex",rows="6", readonly) 
                 +card-section('CSS code with RGB', '', '')
