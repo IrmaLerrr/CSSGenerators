@@ -16,23 +16,20 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 40px;
-  /* height: 100px; */
   line-height: 150%;
-}
-.bsg_title {
-  background-color: #ffffff;
   border-radius: 2rem;
-  width: max-content;
-  font-size: 40px;
+  width: fit-content;
   margin: 3rem auto;
   padding: 1rem 3rem;
 }
+.tsg_title {
+  text-shadow: 2px 2px 4px #005cc8ff;
+}
+.bsg_title {
+  background-color: #ffffff;
+}
 .gg_title {
   background: linear-gradient(0deg, #ffffff 0%, #005cc8 100%);
-  border-radius: 2rem;
-  font-size: 5vw;
-  margin: 3rem auto;
-  padding: 2rem 2rem;
 }
 h4 {
   padding: 0;
@@ -41,16 +38,12 @@ h4 {
 .section {
   display: flex;
   flex-wrap: wrap;
-  /* display: grid; */
   justify-content: center;
   gap: 2rem;
 }
 .card {
   background-color: #ffffff;
   border-radius: 1.5rem;
-  /* display: grid;
-  grid-template-rows: max-content 1fr; */
-  /* border: 2px solid #005cc8ff; */
 }
 .card-header {
   background-color: #005cc8ff;
@@ -89,6 +82,7 @@ h4 {
 
 textarea {
   width: 100%;
+  margin: auto;
   height: auto;
   outline: none;
   line-height: 150%;
@@ -177,7 +171,7 @@ select {
   position: absolute;
   width: min-content;
   left: 1rem;
-  top: 1.5rem;
+  top: 1rem;
   font-size: 1rem;
   text-transform: uppercase;
   padding: 2rem;
@@ -193,16 +187,24 @@ select {
   .card {
     flex: 1 1 100%;
   }
+  .bsg_title,
+  .tsg_title,
+  .gg_title {
+    margin-top: 8rem;
+  }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .card {
     flex: 1 1 calc((100% / 2) - 2rem);
-    /* flex-basis: calc((100% / 2) - 2rem); */
+  }
+  .bsg_title,
+  .tsg_title,
+  .gg_title {
+    margin-top: 8rem;
   }
 }
 @media (min-width: 992px) {
   .card {
     flex: 1 1 calc((100% / 3) - 4rem);
-    /* flex-basis: calc((100% / 3) - 4rem); */
   }
 }
