@@ -157,10 +157,15 @@ $(document).on("click", ".add-btn", function () {
   changeGradient();
 });
 $(document).on("click", ".delete-btn", function () {
-  $(this).parent().parent().parent().parent().remove();
-  reassignID();
-  changeGradientObj();
-  changeGradient();
+  if ($(".color-card").length > 2){
+    $(this).parent().parent().parent().parent().remove();
+    reassignID();
+    changeShadowObj();
+    changeBoxShadow();
+  }
+  else{
+    alert("To create a gradient you need at least two colors")
+  }
 });
 
 function reassignID() {

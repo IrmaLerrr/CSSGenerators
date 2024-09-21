@@ -116,10 +116,15 @@ $(document).on("click", ".bsg_add-btn", function () {
   changeBoxShadow();
 });
 $(document).on("click", ".bsg_delete-btn", function () {
-  $(this).parent().parent().parent().parent().remove();
-  reassignID();
-  changeShadowObj();
-  changeBoxShadow();
+  if ($(".shadow-card").length > 1){
+    $(this).parent().parent().parent().parent().remove();
+    reassignID();
+    changeShadowObj();
+    changeBoxShadow();
+  }
+  else{
+    alert("It is forbidden to delete a single card")
+  }
 });
 
 function reassignID() {
