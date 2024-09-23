@@ -11,11 +11,21 @@ html(lang="en")
     //- script(type="module", src="src/components/text-shadow-generator/text-shadow-generator.js") 
   body
     .container
-        button#btn_mode(mode="day") Day mode
-        select#select_generator(name="")
-          option(value="tsg") Text shadow generator
-          option(value="bsg", selected) Box shadow generator
-          option(value="gg") Gradient generator
+        button#btn_mode.btn.btn-main(mode="day") Day mode
+        button#btn_burger.btn.btn-main
+          span
+        nav 
+          ul 
+            li
+              button#btn_generator-tsg.btn.btn-main.active Text shadow generator
+            li
+              button#btn_generator-bsg.btn.btn-main Box shadow generator
+            li
+              button#btn_generator-gg.btn.btn-main Gradient shadow generator
+        //- select#select_generator(name="")
+        //-   option(value="tsg") Text shadow<br>generator
+        //-   option(value="bsg", selected) Box shadow<br>generator
+        //-   option(value="gg") Gradient<br>generator
         include src/components/text-shadow-generator/text-shadow-generator
         include src/components/box-shadow-generator/box-shadow-generator
         include src/components/gradient-generator/gradient-generator
